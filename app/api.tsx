@@ -1,8 +1,9 @@
 import { useQuery } from "@tanstack/react-query";
-
+import { Skeleton } from "@/components/ui/skeleton";
 interface WeatherData {
   current: {
     temp_c: number;
+    text: string;
   };
 
   location: {
@@ -30,7 +31,8 @@ export default function Api({ city }: ApiProps) {
       ).then((res) => res.json()),
   });
 
-  if (isPending) return "Loading...";
+  if (isPending) return   <Skeleton className="w-[300px] h-[400px] bg-slate-200 flex items-center justify-center" />
+;
 
   if (error) return "An error has occurred: " + error.message;
 
@@ -38,6 +40,7 @@ export default function Api({ city }: ApiProps) {
     <>
       {data?.location.name}
       {data?.current.temp_c}
+      {console.log(data?.current.text)}
     </>
   );
 }
