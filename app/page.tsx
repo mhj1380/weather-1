@@ -1,50 +1,22 @@
+"use client";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import FirstDialog from "@/components/ui/firstDialog";
+import { useState } from "react";
+import { Skeleton } from "@/components/ui/skeleton";
 
-import {Button} from '../components/ui/button';
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import {
- Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogFooter,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "@/components/ui/dialog"
+const queryClient = new QueryClient();
+
 export default function Home() {
+  const [city, setCity] = useState('');
+  const [isOpen, setIsOpen] = useState(true);
+
   return (
-     <>
-     <Dialog>
-      <DialogTrigger >
-      
-      </DialogTrigger>
-      <DialogContent className="sm:max-w-[425px]">
-        <DialogHeader>
-          <DialogTitle>Edit profile</DialogTitle>
-          <DialogDescription>
-            Make changes to your profile here. Click save when youre done.
-          </DialogDescription>
-        </DialogHeader>
-        <div className="grid gap-4 py-4">
-          <div className="grid grid-cols-4 items-center gap-4">
-            <Label htmlFor="name" className="text-right">
-              Name
-            </Label>
-            <Input id="name" value="Pedro Duarte" className="col-span-3" />
-          </div>
-          <div className="grid grid-cols-4 items-center gap-4">
-            <Label htmlFor="username" className="text-right">
-              Username
-            </Label>
-            <Input id="username" value="@peduarte" className="col-span-3" />
-          </div>
-        </div>
-        <DialogFooter>
-          <Button type="submit">Save changes</Button>
-        </DialogFooter>
-      </DialogContent>
-    </Dialog><Dialog>
-      
-      </Dialog>
-      </>);
+    <QueryClientProvider client={queryClient}>
+      <div className="min-h-screen bg-gradient-to-r from-blue-400 via-blue-500 to-blue-600">
+        <FirstDialog city={city} setCity={setCity} dialogIsOpen={isOpen} setDialogIsOpen={setIsOpen} />
+<button onClick={() => setIsOpen(true)}>Open dialog</button>
+{city ==='' && <Skeleton className="w-[100px] h-[20px] rounded-full" />}
+      </div>
+    </QueryClientProvider>
+  );
 }
