@@ -1,8 +1,12 @@
 "use client";
 
 import { Card, CardContent } from "@/components/ui/card";
-import Image from "next/image";
 
+import Image from "next/image";
+import snowy from "@/public/snowy.gif";
+import rainy from "@/public/rainy.gif";
+import sunny from "@/public/sunny.gif";
+import cloudy from "@/public/cloudy.gif";
 interface MainCardProps {
   temperature: number;
   weatherType: string;
@@ -12,13 +16,15 @@ export default function MainCard({ temperature, weatherType }: MainCardProps) {
   const getWeatherGif = (type: string) => {
     switch (type.toLowerCase()) {
       case 'sunny':
-        return '/sunny.gif';
+        return sunny;
       case 'rainy':
-        return '/rainy.gif';
+        return rainy;
       case 'snowy':
-        return '/snowy.gif';
+        return snowy;
+      case 'cloudy':
+        return cloudy;
       default:
-        return '/sunny.gif';
+        return sunny;
     }
   };
 
@@ -35,6 +41,7 @@ export default function MainCard({ temperature, weatherType }: MainCardProps) {
         </div>
         <div className="text-6xl font-bold">
           {temperature}°C
+     
         </div>
       </CardContent>
     </Card>
