@@ -7,10 +7,6 @@ import snowy from "@/public/snowy.gif";
 import rainy from "@/public/rainy.gif";
 import sunny from "@/public/sunny.gif";
 import cloudy from "@/public/cloudy.gif";
-import poitner from '@/public/pointer.png';
-import { Forecast } from "../forecast";
-import DetailCard from "./detailCard";
-
 
 interface MainCardProps {
   temperature: number;
@@ -19,10 +15,10 @@ interface MainCardProps {
   windDirection: number;
   humidity: number;
   chanceOfRain: number;
-  forecastData: Array<any>;
+
 }
 
-export default function MainCard({
+export default function DetailCard({
   temperature,
   weatherType,
   windSpeed,
@@ -51,17 +47,9 @@ export default function MainCard({
     <Card className="w-[600px] h-[450px] mx-auto"></Card>
     <Card className="w-[300px] h-[450px] mx-auto">
       <CardContent className="flex flex-col items-center justify-center h-full">
-        <div className="w-48 h-48 rounded-full bg-gray-100 flex items-center justify-center mb-6 mt-2 overflow-hidden">
-          <Image
-            src={getWeatherGif(weatherType)}
-            alt={weatherType}
-            className="w-full h-full object-cover"
-            width={192}
-            height={192}
-          />
-        </div>
+       
         <div className="text-6xl font-bold mb-5 mt">{temperature}°C</div>
-        <Forecast data={forecastData}/>
+    
       </CardContent>
     </Card>
     

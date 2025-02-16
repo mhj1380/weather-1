@@ -5,7 +5,10 @@ import MainCard from "@/components/ui/mainCard";
 import { categorizeWeather } from "@/lib/weatherutiles";
 
 interface WeatherData {
-  
+  forecast:{
+    forecastday:object[];
+
+  }
   current: {
     wind_kph: number;
   wind_degree: number;
@@ -49,7 +52,7 @@ export default function Api({ city, setCity, isOpen, setIsOpen }: ApiProps) {
   });
 
   const giffy = categorizeWeather(data?.current.condition.text ?? "");
-  console.log(data)
+ 
 
   return (
     <>
@@ -73,6 +76,7 @@ export default function Api({ city, setCity, isOpen, setIsOpen }: ApiProps) {
             windSpeed={data?.current.wind_kph ?? 0}
             humidity={data?.current.humidity ?? 0}
             chanceOfRain={data?.current.precip_mm ?? 0}
+            forecastData={data?.forecast.forecastday?? []}
           />
         </>
       )}
