@@ -16,6 +16,8 @@ interface WeatherData {
   precip_mm: number;
   feelslike_c: number;
     temp_c: number;
+    uv: number;
+  
     condition: {
       text: string;
     };
@@ -52,7 +54,7 @@ export default function Api({ city, setCity, isOpen, setIsOpen }: ApiProps) {
   });
 
   const giffy = categorizeWeather(data?.current.condition.text ?? "");
- 
+ console.log(data) 
 
   return (
     <>
@@ -77,6 +79,8 @@ export default function Api({ city, setCity, isOpen, setIsOpen }: ApiProps) {
             humidity={data?.current.humidity ?? 0}
             chanceOfRain={data?.current.precip_mm ?? 0}
             forecastData={data?.forecast.forecastday?? []}
+            uv={data?.current.uv ?? 0}
+            feelslike_c={data?.current.feelslike_c ?? 0}
           />
         </>
       )}

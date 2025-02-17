@@ -6,28 +6,25 @@ import { Label } from "@/components/ui/label";
 import {
   Dialog,
   DialogContent,
-  // DialogDescription,
   DialogFooter,
   DialogHeader,
   DialogTitle,
-
+  DialogClose,
 } from "@/components/ui/dialog";
 import { useState } from "react";
 
 interface FirstDialogProps {
   city: string;
   setCity: (city: string) => void;
-
   dialogIsOpen: boolean;
   setDialogIsOpen: (dialogIsOpen: boolean) => void;
 }
 
 export default function FirstDialog({ setCity, dialogIsOpen, setDialogIsOpen }: FirstDialogProps) {
- const [input, setInput] = useState('New York');
+  const [input, setInput] = useState('New York');
+
   return (
-    <Dialog open={dialogIsOpen}>
-
-
+    <Dialog open={dialogIsOpen} onOpenChange={setDialogIsOpen}>
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
           <DialogTitle>Choose city</DialogTitle>
@@ -38,7 +35,7 @@ export default function FirstDialog({ setCity, dialogIsOpen, setDialogIsOpen }: 
               Name
             </Label>
             <Input
-              onInput={(e) => setInput((e.target as HTMLInputElement).value ) }
+              onInput={(e) => setInput((e.target as HTMLInputElement).value)}
               id="name"
               value={input}
               className="col-span-3"
@@ -50,6 +47,9 @@ export default function FirstDialog({ setCity, dialogIsOpen, setDialogIsOpen }: 
             Show weather
           </Button>
         </DialogFooter>
+        <DialogClose>
+ 
+        </DialogClose>
       </DialogContent>
     </Dialog>
   );

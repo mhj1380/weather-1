@@ -20,6 +20,8 @@ interface MainCardProps {
   humidity: number;
   chanceOfRain: number;
   forecastData: Array<any>;
+  uv: number;
+  feelslike_c: number;
 }
 
 export default function MainCard({
@@ -29,7 +31,9 @@ export default function MainCard({
   windDirection,
   humidity,
   chanceOfRain,
-  forecastData
+  forecastData,
+  uv,
+  feelslike_c
 }: MainCardProps) {
   const getWeatherGif = (type: string) => {
     switch (type.toLowerCase()) {
@@ -64,6 +68,6 @@ export default function MainCard({
         <Forecast data={forecastData}/>
       </CardContent>
     </Card>
-    <DetailCard chanceOfRain={chanceOfRain} humidity={humidity}  windSpeed={windSpeed} windDirection={windDirection}/>
+    <DetailCard chanceOfRain={chanceOfRain} humidity={humidity}  windSpeed={windSpeed} windDirection={windDirection} uv={uv} feelslike_c={feelslike_c}/>
     </div> )
 }
