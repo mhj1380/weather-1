@@ -68,6 +68,6 @@ export default function MainCard({
         <Forecast data={forecastData}/>
       </CardContent>
     </Card>
-    <DetailCard chanceOfRain={chanceOfRain} humidity={humidity}  windSpeed={windSpeed} windDirection={windDirection} uv={uv} feelslike_c={feelslike_c}/>
+    <DetailCard temperature={temperature} weatherType={weatherType} chanceOfRain={chanceOfRain} humidity={humidity} windSpeed={windSpeed} windDirection={windDirection} uv={uv} feelslike_c={feelslike_c}/>
     </div> )
 }

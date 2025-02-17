@@ -3,6 +3,8 @@ import FirstDialog from "@/components/ui/firstDialog";
 import { Skeleton } from "@/components/ui/skeleton";
 import MainCard from "@/components/ui/mainCard";
 import { categorizeWeather } from "@/lib/weatherutiles";
+import circle from "@/public/circle.png";
+import Image from "next/image";
 
 interface WeatherData {
   forecast:{
@@ -43,8 +45,13 @@ export default function Api({ city, setCity, isOpen, setIsOpen }: ApiProps) {
   const { isLoading, error, data } = useQuery<WeatherData, QueryError>({
     queryKey: [city],
     queryFn: async () => {
+      const apiKey = process.env.NEXT_PUBLIC_WEATHER_API_KEY;
+      if (!apiKey) {
+        throw new Error("API key not found in environment variables");
+      }
+
       const response = await fetch(
-        `http://api.weatherapi.com/v1/forecast.json?key=4cfd7f3dafb34f289b4200317250302&q=${city}&days=5&aqi=no&alerts=no`
+        `http://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${city}&days=5&aqi=no&alerts=no`
       );
       if (!response.ok) {
         throw new Error("City not found");
@@ -86,9 +93,9 @@ export default function Api({ city, setCity, isOpen, setIsOpen }: ApiProps) {
       )}
       <button
         onClick={() => setIsOpen(true)}
-        className="fixed bottom-4 right-4 bg-white p-2 rounded-md"
+        className="fixed bottom-4 right-4 bg-white p-2 rounded-full"
       >
-        Change city
+      <Image src={circle} alt="circle" width={50} height={50} />
       </button>
     </>
   );
