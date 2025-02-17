@@ -1,12 +1,9 @@
 "use client";
 
 import { Card, CardContent } from "@/components/ui/card";
-
 import Image from "next/image";
-import snowy from "@/public/snowy.gif";
-import rainy from "@/public/rainy.gif";
-import sunny from "@/public/sunny.gif";
-import cloudy from "@/public/cloudy.gif";
+import poitner from '@/public/pointer.png';
+import compass from '@/public/compass.svg';
 
 interface MainCardProps {
   temperature: number;
@@ -15,7 +12,6 @@ interface MainCardProps {
   windDirection: number;
   humidity: number;
   chanceOfRain: number;
-
 }
 
 export default function DetailCard({
@@ -25,33 +21,44 @@ export default function DetailCard({
   windDirection,
   humidity,
   chanceOfRain,
-  forecastData
 }: MainCardProps) {
-  const getWeatherGif = (type: string) => {
-    switch (type.toLowerCase()) {
-      case "sunny":
-        return sunny;
-      case "rainy":
-        return rainy;
-      case "snowy":
-        return snowy;
-      case "cloudy":
-        return cloudy;
-      default:
-        return sunny;
-    }
+  const rotationStyle = {
+    transform: `rotate(${windDirection}deg)`,
   };
 
   return (
     <div className="flex space-x-10">
-    <Card className="w-[600px] h-[450px] mx-auto"></Card>
-    <Card className="w-[300px] h-[450px] mx-auto">
-      <CardContent className="flex flex-col items-center justify-center h-full">
-       
-        <div className="text-6xl font-bold mb-5 mt">{temperature}°C</div>
-    
-      </CardContent>
-    </Card>
-    
-    </div> )
+      <Card className="min-w-[300px] max-w-[600px] h-[400px] mx-auto max-lg:w-[300px] max-lg:h-auto ">
+        <CardContent
+          className="flex items-center justify-center h-full   max-lg:space-y-3 flex-wrap mt-2"
+        >
+          <Card className="bg-slate-200 w-[160px] h-[140px] m-2 relative">
+            <h4 className="mt-1 ml-2">wind direction</h4>
+            <div className="absolute inset-0 flex items-center justify-center">
+              <Image src={compass} alt='compass' width={80} height={80} />
+            </div>
+            <div className="absolute inset-0 flex items-center justify-center" style={rotationStyle}>
+            <Image src={poitner} alt='pointer' width={70} height={70} />
+            </div>
+            <h4 className="bottom-2 absolute ml-2">{windDirection}°</h4>
+          </Card>
+          <Card className="bg-slate-200 w-[160px] h-[140px] m-2">
+            {windSpeed}
+          </Card>
+          <Card className="bg-slate-200 w-[160px] h-[140px] m-2 " >
+            something
+          </Card>
+          <Card className="bg-slate-200 w-[160px] h-[140px] m-2 ">
+            something
+          </Card>
+          <Card className="bg-slate-200 w-[160px] h-[140px] m-2 ">
+            something
+          </Card>
+          <Card className="bg-slate-200 w-[160px] h-[140px]  m-2">
+            something
+          </Card>
+        </CardContent>
+      </Card>
+    </div>
+  );
 }

@@ -7,7 +7,7 @@ import snowy from "@/public/snowy.gif";
 import rainy from "@/public/rainy.gif";
 import sunny from "@/public/sunny.gif";
 import cloudy from "@/public/cloudy.gif";
-import poitner from '@/public/pointer.png';
+
 import { Forecast } from "../forecast";
 import DetailCard from "./detailCard";
 
@@ -47,8 +47,8 @@ export default function MainCard({
   };
 
   return (
-    <div className="flex space-x-10">
-    <Card className="w-[600px] h-[450px] mx-auto"></Card>
+    <div className="flex md:lg:space-x-10 max-lg:flex-col space-y-5 mt-10">
+   
     <Card className="w-[300px] h-[450px] mx-auto">
       <CardContent className="flex flex-col items-center justify-center h-full">
         <div className="w-48 h-48 rounded-full bg-gray-100 flex items-center justify-center mb-6 mt-2 overflow-hidden">
@@ -64,6 +64,6 @@ export default function MainCard({
         <Forecast data={forecastData}/>
       </CardContent>
     </Card>
-    
+    <DetailCard chanceOfRain={chanceOfRain} humidity={humidity}  windSpeed={windSpeed} windDirection={windDirection}/>
     </div> )
 }
