@@ -61,7 +61,7 @@ export default function Api({ city, setCity, isOpen, setIsOpen }: ApiProps) {
   });
 
   const giffy = categorizeWeather(data?.current.condition.text ?? "");
- console.log(data) 
+  
 
   return (
     <>

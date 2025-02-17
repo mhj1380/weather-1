@@ -19,7 +19,6 @@ interface ForecastData {
 
 export const Forecast = (forecastData: ForecastData) => {
 
-  console.log(forecastData);
 
   const todayDate = (date: string): string => {
     const dayNames = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
