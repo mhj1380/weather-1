@@ -11,7 +11,6 @@ import cloudy from "@/public/cloudy.gif";
 import { Forecast } from "../forecast";
 import DetailCard from "./detailCard";
 
-
 interface MainCardProps {
   temperature: number;
   weatherType: string;
@@ -19,7 +18,8 @@ interface MainCardProps {
   windDirection: number;
   humidity: number;
   chanceOfRain: number;
-  forecastData: Array<unknown>;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  forecastData: any;
   uv: number;
   feelslike_c: number;
 }
