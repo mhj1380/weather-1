@@ -6,20 +6,33 @@ import { categorizeWeather } from "@/lib/weatherutiles";
 import circle from "@/public/circle.png";
 import Image from "next/image";
 
-interface WeatherData {
-  forecast:{
-    forecastday:object[];
+interface Condition {
+  text: string;
+  icon: string; // Add icon property
+}
 
-  }
+interface Day {
+  avgtemp_c: number;
+  condition: Condition;
+}
+
+interface ForecastDay {
+  date: string;
+  day: Day;
+}
+
+interface WeatherData {
+  forecast: {
+    forecastday: ForecastDay[];
+  };
   current: {
     wind_kph: number;
-  wind_degree: number;
-  humidity: number;
-  precip_mm: number;
-  feelslike_c: number;
+    wind_degree: number;
+    humidity: number;
+    precip_mm: number;
+    feelslike_c: number;
     temp_c: number;
     uv: number;
-  
     condition: {
       text: string;
     };
@@ -51,7 +64,7 @@ export default function Api({ city, setCity, isOpen, setIsOpen }: ApiProps) {
       }
 
       const response = await fetch(
-        `http://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${city}&days=5&aqi=no&alerts=no`
+        `http://api.weatherapi.com/v1/forecast.json?key=4cfd7f3dafb34f289b4200317250302&q=${city}&days=5&aqi=no&alerts=no`
       );
       if (!response.ok) {
         throw new Error("City not found");
