@@ -60,7 +60,8 @@ export default function Api({ city, setCity, isOpen, setIsOpen }: ApiProps) {
     queryFn: async () => {
   
       const response = await fetch(
-        `http://api.weatherapi.com/v1/forecast.json?key=76057bd3e2cd877301e52346826f8d6c&q=${city}&days=5&aqi=no&alerts=no`
+        `http://api.weatherapi.com/v1/forecast.json?key=373b2287be554747a74115405251802&q=${city}&days=5&aqi=no`
+
       );
       if (!response.ok) {
         throw new Error("City not found");
