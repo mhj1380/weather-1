@@ -58,11 +58,7 @@ export default function Api({ city, setCity, isOpen, setIsOpen }: ApiProps) {
   const { isLoading, error, data } = useQuery<WeatherData, QueryError>({
     queryKey: [city],
     queryFn: async () => {
-      const apiKey = process.env.NEXT_PUBLIC_WEATHER_API_KEY;
-      if (!apiKey) {
-        throw new Error("API key not found in environment variables");
-      }
-
+  
       const response = await fetch(
         `http://api.weatherapi.com/v1/forecast.json?key=4cfd7f3dafb34f289b4200317250302&q=${city}&days=5&aqi=no&alerts=no`
       );
