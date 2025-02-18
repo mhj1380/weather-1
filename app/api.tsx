@@ -60,7 +60,7 @@ export default function Api({ city, setCity, isOpen, setIsOpen }: ApiProps) {
     queryFn: async () => {
   
       const response = await fetch(
-        `http://api.weatherapi.com/v1/forecast.json?key=373b2287be554747a74115405251802&q=${city}&days=5&aqi=no`
+        `https://api.weatherapi.com/v1/forecast.json?key=373b2287be554747a74115405251802&q=${city}&days=5&aqi=no`
 
       );
       if (!response.ok) {
