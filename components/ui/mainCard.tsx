@@ -19,7 +19,7 @@ interface MainCardProps {
   windDirection: number;
   humidity: number;
   chanceOfRain: number;
-  forecastData: Array<any>;
+  forecastData: Array<unknown>;
   uv: number;
   feelslike_c: number;
 }
